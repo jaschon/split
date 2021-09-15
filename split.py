@@ -14,12 +14,10 @@ def split_pdf(paths):
         if path.endswith(".pdf"):
             try:
                 with open(path, 'rb') as file_p:
-                    path_root, path_ext = os.path.splitext(os.path.basename(path).replace(" ", "_"))
-                    # new_dir_name = os.path.expanduser("~/Desktop")
+                    path_root, path_ext = os.path.splitext(os.path.basename(path).replace(" ", "_"))                    
                     new_dir_name = os.path.dirname(path)
                     pdf_read = PyPDF2.PdfFileReader(file_p, False)
-                    for page in range(pdf_read.getNumPages()):
-                        # new_path_name = os.path.join(new_dir_name, f"{path_root}_{page+1:03d}{path_ext}")
+                    for page in range(pdf_read.getNumPages()):                        
                         new_path_name = os.path.join(new_dir_name, f"{page+1}{path_ext}")
                         pdf_write = PyPDF2.PdfFileWriter()
                         pdf_write.addPage(pdf_read.getPage(page))
@@ -27,7 +25,6 @@ def split_pdf(paths):
                             pdf_write.write(file_write)
             except (OSError, PyPDF2.utils.PdfReadError, PyPDF2.utils.PdfWriteError) as e:
                 print(f"• {e}")
-
 
 def join_pdf(paths):
     """Joins pdf file list to a single file."""
