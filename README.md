@@ -1,6 +1,6 @@
 # split
 
-Tools to split/join pdf files
+A tool to split/join pdf files.
 
 ## Requirements
 
