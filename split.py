@@ -6,7 +6,6 @@ Tools to split/join pdf files
 import argparse
 import os
 import PyPDF2
-from datetime import datetime
 
 def split_pdf(paths):
     """Splits pdf files into separate files."""
@@ -30,7 +29,7 @@ def join_pdf(paths):
     """Joins pdf file list to a single file."""
     pdf_merger = PyPDF2.PdfFileMerger(False)
     try:
-        new_file_name = os.path.join(os.path.expanduser("~/Desktop"), "combo.pdf")
+        new_file_name = os.path.join(os.path.dirname(paths[0]), "combo.pdf")
         for path in paths:
             path = os.path.abspath(path)
             if path.endswith(".pdf") and path != new_file_name:
