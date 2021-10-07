@@ -22,7 +22,7 @@ def split_pdf(paths):
                         pdf_write.addPage(pdf_read.getPage(page))
                         with open(new_path_name, 'wb') as file_write:
                             pdf_write.write(file_write)
-            except (OSError, PyPDF2.utils.PdfReadError, PyPDF2.utils.PdfWriteError) as e:
+            except (OSError, PyPDF2.utils.PdfReadError) as e:
                 print(f"• {e}")
 
 def join_pdf(paths):
@@ -35,7 +35,7 @@ def join_pdf(paths):
             if path.endswith(".pdf") and path != new_file_name:
                 pdf_merger.append(path)
         pdf_merger.write(new_file_name)
-    except (OSError, PyPDF2.utils.PdfReadError, PyPDF2.utils.PdfWriteError) as e:
+    except (OSError, PyPDF2.utils.PdfReadError) as e:
         print(f"• {e}")
     finally:
         pdf_merger.close()
