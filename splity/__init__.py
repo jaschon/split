@@ -3,7 +3,10 @@
 Tools to split/join pdf files
 """
 
-import argparse
+__author__ = "Jason Rebuck"
+__copyright__ = "2011-2022"
+__version__ = "0.30"
+
 import os
 import PyPDF2
 
@@ -40,22 +43,5 @@ def join_pdf(paths):
     finally:
         pdf_merger.close()
 
-def main(parser):
-    """Decide what action to run."""
-    args = parser.parse_args()
-    if args.join:
-        join_pdf(args.paths)
-    else:
-        split_pdf(args.paths)
-
-def setup_parser():
-    """Setup Parser"""
-    parser = argparse.ArgumentParser(description="PDF Tools")
-    parser.add_argument("paths", help="PDF Paths", nargs='+')
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument("--split", "-s", help="Split PDF path", action="store_true")
-    group.add_argument("--join", "-j", help="Join PDF paths", action="store_true")
-    return parser
-
 if __name__ == "__main__":
-    main(setup_parser())
+    pass
