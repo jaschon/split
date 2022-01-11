@@ -8,7 +8,6 @@ A tool to split/join pdf files.
 
 ## Requirements
 
-- argparse
 - PyPDF2
 
 ## Usage
