@@ -4,7 +4,10 @@ A tool to split/join pdf files.
 
 ## Install
 
-`python3 setup.py install`
+```
+python3 setup.py build
+pip3 install .
+```
 
 ## Requirements
 
