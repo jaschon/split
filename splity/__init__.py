@@ -27,7 +27,7 @@ def split_pdf(paths):
                     folder = make_dir(path, "split")
                     pdf_read = PyPDF2.PdfFileReader(file_p, False)
                     for page in range(pdf_read.getNumPages()):                        
-                        file_name = os.path.join(folder, f"{page+1:3}.pdf")
+                        file_name = os.path.join(folder, f"{page+1:3}.pdf".strip())
                         pdf_write = PyPDF2.PdfFileWriter()
                         pdf_write.addPage(pdf_read.getPage(page))
                         with open(file_name, 'wb') as file_write:
