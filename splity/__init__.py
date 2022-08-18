@@ -5,7 +5,7 @@ Tools to split/join pdf files
 
 __author__ = "Jason Rebuck"
 __copyright__ = "2011-2022"
-__version__ = "0.35"
+__version__ = "0.355"
 
 import os
 import PyPDF2
