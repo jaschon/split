@@ -4,6 +4,7 @@
 splity [myfile.pdf]
     --split | -s [myfile.pdf]
     --join | -j [myfile.pdf]
+    --pad | -p
 """
 
 import argparse
@@ -15,17 +16,17 @@ def main(parser):
     if args.join:
         join_pdf(args.paths)
     else:
-        split_pdf(args.paths, args.fill)
+        split_pdf(args.paths, 3 if args.pad else 0)
 
 def setup_parser():
     """Setup Parser"""
-    parser = argparse.ArgumentParser(description="PDF Tools")
+    parser = argparse.ArgumentParser(description="Tools to Split/Join PDF Files")
     parser.add_argument("paths", help="PDF Paths", nargs='+')
-    parser.add_argument("--fill", help="Split Path Leading Zero Padding Amount", \
-            action="store", type=int, default=3)
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--split", "-s", help="Split PDF path", action="store_true")
     group.add_argument("--join", "-j", help="Join PDF paths", action="store_true")
+    parser.add_argument("--pad", "-p", help="Pad output pdf path with leading zeros", \
+            action="store_true", default=False)
     return parser
 
 if __name__ == "__main__":

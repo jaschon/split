@@ -4,8 +4,8 @@ Tools to split/join pdf files
 """
 
 __author__ = "Jason Rebuck"
-__copyright__ = "2011-2022"
-__version__ = "0.37"
+__copyright__ = "2011-2023"
+__version__ = "0.38"
 
 import os
 import PyPDF2
@@ -13,9 +13,10 @@ import uuid
 import re
 
 def make_dir(path, extra=""):
+    """Make a unique folder"""
     root, ext =  os.path.splitext(re.sub('[^0-9a-zA-Z\.]+', '_', os.path.basename(path)))                    
     folder = os.path.join(os.path.dirname(path), extra, root)
-    folder = f'{folder}_{uuid.uuid4()}' if os.path.isdir(folder) else folder
+    folder = f'{folder}_{str(uuid.uuid4())[:6]}' if os.path.isdir(folder) else folder
     os.makedirs(folder)
     return folder
 
@@ -40,7 +41,7 @@ def join_pdf(paths):
     """Joins pdf file list to a single file."""
     pdf_merger = PyPDF2.PdfFileMerger(False)
     try:
-        file_name = os.path.join(make_dir(paths[0], "join"), f"joined[{len(paths)}].pdf")
+        file_name = os.path.join(make_dir(paths[0], "join"), f"combined.pdf")
         for path in paths:
             path = os.path.abspath(path)
             try:
